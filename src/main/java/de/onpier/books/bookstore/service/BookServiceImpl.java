@@ -34,25 +34,53 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
-        books.addAll(adventureProviderApi.getBooks().stream().map(adventureBook -> Book.builder().build()).toList());
-        books.addAll(travelProviderApi.getBooks().stream().map(travelBook -> Book.builder().build()).toList());
-        books.addAll(fantasyProviderApi.getBooks().stream().map(fantasyBook -> Book.builder().build()).toList());
+        books.addAll(adventureProviderApi.getBooks().stream().map(adventureBook -> Book.builder()
+                .id(adventureBook.getBookId())
+                .author(adventureBook.getAuthor())
+                .title(adventureBook.getTitle())
+                .price(adventureBook.getPrice())
+                .build()).toList());
+        books.addAll(travelProviderApi.getBooks().stream().map(travelBook -> Book.builder()
+                .id(travelBook.getBookId())
+                .author(travelBook.getAuthor())
+                .title(travelBook.getTitle())
+                .price(travelBook.getPrice())
+                .build()).toList());
+        books.addAll(fantasyProviderApi.getBooks().stream().map(fantasyBook -> Book.builder()
+                .id(fantasyBook.getBookId())
+                .author(fantasyBook.getAuthor())
+                .title(fantasyBook.getTitle())
+                .price(fantasyBook.getPrice()).build()).toList());
         return books;
     }
 
     @Override
     public List<Book> getFantasyBooks() {
-        return fantasyProviderApi.getBooks().stream().map(travelBook -> Book.builder().build()).toList();
+        return fantasyProviderApi.getBooks().stream().map(travelBook -> Book.builder()
+                .id(travelBook.getBookId())
+                .author(travelBook.getAuthor())
+                .title(travelBook.getTitle())
+                .price(travelBook.getPrice())
+                .build()).toList();
     }
 
     @Override
     public List<Book> getAdventureBooks() {
-        return adventureProviderApi.getBooks().stream().map(travelBook -> Book.builder().build()).toList();
+        return adventureProviderApi.getBooks().stream().map(travelBook -> Book.builder()
+                .id(travelBook.getBookId())
+                .author(travelBook.getAuthor())
+                .title(travelBook.getTitle())
+                .price(travelBook.getPrice())
+                .build()).toList();
     }
 
     @Override
     public List<Book> getTravelBooks() {
-        return travelProviderApi.getBooks().stream().map(travelBook -> Book.builder().build()).toList();
+        return travelProviderApi.getBooks().stream().map(travelBook -> Book.builder()
+                .id(travelBook.getBookId())
+                .author(travelBook.getAuthor())
+                .title(travelBook.getTitle())
+                .price(travelBook.getPrice()).build()).toList();
     }
 
     public boolean orderBook(String bookId, UserAddress userAddress) {

@@ -1,16 +1,13 @@
 package de.onpier.books.bookstore.client;
 
 import de.onpier.books.bookstore.repository.CommissionEntity;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
-
 @Data
-@Builder
+@AllArgsConstructor
 public abstract class IBook {
     private String bookId;
     private Author author;

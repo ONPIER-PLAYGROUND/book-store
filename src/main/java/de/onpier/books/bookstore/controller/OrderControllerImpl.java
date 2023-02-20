@@ -4,9 +4,11 @@ import de.onpier.books.bookstore.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
 public class OrderControllerImpl implements OrderController {
     private BookService bookService;
 
@@ -14,7 +16,7 @@ public class OrderControllerImpl implements OrderController {
         this.bookService = bookService;
     }
 
-    public ResponseEntity<?> orderBook(Order order) {
+    public ResponseEntity<?> orderBook(@RequestBody Order order) {
         if (bookService.orderBook(order.getBookId(), order.getUserAddress())) {
             return ResponseEntity.ok(order);
         } else {
